@@ -1,0 +1,50 @@
+🧪 Exercice : Préparation des données pour le Machine Learning
+Dans cet exercice, tu vas explorer, transformer et préparer un jeu de données (reviews.csv) contenant des évaluations de vêtements par des clients.
+🎯 Objectifs
+	•	Charger un dataset au format CSV
+	•	Explorer les types de données (variables numériques et catégorielles)
+	•	Appliquer différents types d'encodage (binaire, ordinal, one-hot)
+	•	Réaliser une mise à l’échelle des variables numériques (scaling)
+
+📁 1. Importation des données
+	•	Importe les bibliothèques nécessaires : pandas, numpy, StandardScaler, etc.
+	•	Charge le fichier reviews.csv à l’aide de pd.read_csv.
+	•	Affiche :
+	•	les premières lignes du dataset,
+	•	la liste des colonnes,
+	•	les types de données,
+	•	les informations générales avec .info().
+
+🧭 2. Exploration des données
+Pour chaque variable catégorielle importante :
+	•	Affiche ses étiquettes avec .value_counts().
+	•	Identifie :
+	•	les variables binaires (ex : Recommended IND)
+	•	les variables ordinales (ex : Rating si elle est textuelle : "Loved it", "Liked it", etc.)
+	•	les variables nominales (ex : Department Name, Class Name, Division Name, etc.)
+
+🔁 3. Encodage des variables catégorielles
+3.1 Encodage Binaire
+	•	Pour la variable Recommended IND, crée une nouvelle colonne encodée si ce n’est pas déjà fait.
+	•	Vérifie qu'elle est bien au format 0/1.
+3.2 Encodage Ordinal
+	•	Pour la variable Rating (si elle est textuelle), crée un dictionnaire d’encodage :
+	•	"Loved it" → 5
+	•	"Liked it" → 4
+	•	"Was okay" → 3
+	•	"Not great" → 2
+	•	"Hated it" → 1
+	•	Applique cet encodage dans une nouvelle colonne Rating_Encoded.
+3.3 Encodage One-Hot
+	•	Pour la variable Department Name, applique un encodage one-hot via pd.get_dummies().
+	•	Ajoute les colonnes générées au dataframe d’origine.
+
+🧮 4. Mise à l’échelle des données
+	•	Sélectionne les colonnes numériques et encodées que tu veux utiliser pour un modèle.
+	•	Exemples : Age, Recommended_IND_Binary, Rating_Encoded, et les colonnes one-hot.
+	•	Utilise StandardScaler pour mettre les données à l’échelle.
+	•	Affiche un aperçu du DataFrame transformé.
+
+🚀 BONUS (facultatif)
+	•	Convertis la colonne review_date en format datetime avec pd.to_datetime().
+	•		•	Réfléchis à l’utilité de cette colonne (ex : tri chronologique, extraction d’année ou de mois).
