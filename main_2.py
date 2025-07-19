@@ -212,7 +212,7 @@ reviews_scaled['is_weekend'] = reviews['is_weekend'] # 💡 Pourquoi ne pas scal
 # Parce qu’il s’agit d’une variable binaire (0 ou 1), et que le scaling pourrait lui faire perdre son sens logique dans certains modèles.
 
 # 8. Affichage
-print("\n✅ Données après mise à l’échelle :")
+print("\n✅ AFFICHAGE Données après mise à l’échelle :")
 print(reviews_scaled.head())
 
 

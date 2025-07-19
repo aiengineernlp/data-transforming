@@ -67,7 +67,7 @@ Rating_dictt = {
     'Hated it':1
 }
 df['Rating_Encoded'] = df['Rating'].map(Rating_dictt)
-print("variable encodee : ", df['Rating_Encoded'])
+print("variable encodee : ", df['Rating_Encoded'])#❌❌ NON A REVOIR❌❌❌
 print('\n')
 
 print("3.3 Encodage One-Hot de Class Name: ")
