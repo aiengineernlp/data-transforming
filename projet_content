@@ -15,7 +15,7 @@ Dans cet exercice, tu vas explorer, transformer et préparer un jeu de données 
 	•	les types de données,
 	•	les informations générales avec .info().
 
-🧭 2. Exploration des données
+🧭 2. Exploration des données  (les étiquettes/valeur unique/categories, type d'encodage et raison)
 Pour chaque variable catégorielle importante :
 	•	Affiche ses étiquettes avec .value_counts().
 	•	Identifie :

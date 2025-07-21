@@ -103,6 +103,7 @@ print("\n")
 print("Methode 2  avec le Ordinal encoder")
 # nettoya des des valeurs pour enlever les espaces superflux en debut et en fin de chaines
 reviews['Rating'] = reviews['Rating'].astype(str).str.strip()
+
 # creation de lencoder et definition de l'ordre des categories/valeurs uniques
 oc = OrdinalEncoder(categories=[['Loved it','Liked it','Was okay','Not great','Hated it']])
 # remodelization de la variable
