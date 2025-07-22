@@ -78,8 +78,6 @@ print("le resultat est :\n", df['age_encoder'])
 
 print("\n\n\n")
 print("CAS DE Rating")
-#--->> Retirer les espaces en fin et en debut des chaines de caracteres
-df['Rating'] = df['Rating'].astype(str).str.strip()
 #--->> Methode 1: ENCODAGE AVEC .map
 '''Creation dun dictionnaire'''
 rating_21_dict = {
@@ -93,22 +91,33 @@ df['Rating_encoder_map'] = df['Rating'].map(rating_21_dict)
 print("le resultat est :\n", df['Rating_encoder_map'])
 
 #--->> Methode 2: ENCODAGE AVEC OrdinalEncoder
+#--->> Retirer les espaces en fin et en debut des chaines de caracteres
+reviews21['Rating'] = reviews21['Rating'].astype(str).str.strip()
+# Vérification des valeurs uniques restantes
+print("Valeurs uniques après nettoyage :", df['Rating'].unique())
+# Définir les valeurs connues et autorisées
+valid_categories = ["Loved it", "Liked it", "Was okay", "Not great", "Hated it"]
+# Filtrer les valeurs valides pour éviter l'erreur avec OrdinalEncoder
+df_valid = df[df['Rating'].isin(valid_categories)].copy()
+# Reshape (remodelisation de la variable)
+rating_reshaped = df_valid['Rating'].values.reshape(-1, 1)
 
-# creation de l'encodeur et definition de l'ordre des categories
-oc = OrdinalEncoder(categories=[["Loved it","Liked it","Was okay","Not great","Hated it"]])
-# remodelisation de la variable
+# Encoder avec ordre défini
+encoder = OrdinalEncoder(categories=[valid_categories])
+df_valid['Rating_encoder'] = encoder.fit_transform(rating_reshaped)
+# Bonus : Ajouter une ligne pour détecter les valeurs inconnues
+print("Valeurs non reconnues :", df[~df['Rating'].isin(valid_categories)]['Rating'].unique())
 
-rating_reshaped = df['Rating'].values.reshape(-1,1)
-
-# creer une nouvelle variables/colonnes avec les valeurs numeriques
-
-df['Rating_encoder'] = oc.fit_transform(rating_reshaped)
-print("le resultat est :\n", df['Rating_encoder'])
+# Affichage
+print(df_valid[['Rating', 'Rating_encoder']])
 
 print("\n\n\n")
 print("CAS DE Recommended IND --->> binaire(1 ou 2)")
 le = LabelEncoder()
 df['Recommended_IND_encoder'] = le.fit_transform(df['Recommended IND'])
 print("le resultat est :\n", df['Recommended_IND_encoder'])
+
+
+
 
 

@@ -220,3 +220,31 @@ print("\n\n")
 # 4            0.113162    0.833041   -0.229475  ...    -0.501795 -1.258835 -1.125416
 
 
+
+"""NOTES"""
+
+
+"""
+N:1
+====>>> La methode .str.strip() d'une ligne tel que: df['Rating'] = df['Rating'].astype(str).str.strip()
+#ne dois pas etre utilisee sur une dataframe entiere mais doit etre utiliser UNIQUEMENT SUR UNE SERIE DE TYPE CHAINE 
+#DE CARACTERES (pd.Series), c'est a dire sur une seule colonne contenant les chaines. PAS SUR UN DATAFRAME ENTIER/COMPLET   
+"""
+
+"""
+N:2
+====>>>  df[['Rating']] = ..., retourne une Dataframe pas une Series de type object/str
+"""
+
+
+"""
+N:3 -- DataFrame Vs Series
+====>>>  Un dataframe l'ensembles des colonnes avec leurs types, c'est en un mot notre Dataset / jeu de donnees
+====>>>  Une "Serie" est une colonne du Dataframe ayant un type tel que (object, str , int64 , ...). pour avoir les series on  fait pd.Series
+====>>>  Alors donc on ne fait pas la methode .str.strip() sur un dataframe mais on le fait sur les series et il faut savoir que :
+df[['Rating']] retourne un DataFrame, pas une Series, et str.strip() ne fonctionne pas sur les DataFrames.
+
+====>>> df['Rating'] = df['Rating'].astype(str).str.strip().   ---->>>df['Rating'] retourne une Serie
+df[['Rating']] = ..., retourne une Dataframe pas une Series de type object/str
+====>>> df[['Rating']] = df[['Rating']].astype(str).str.strip()  # ❌ ❌❌❌❌❌Erreur ici ❌❌❌❌❌ NE SE FAIT PAS
+"""
